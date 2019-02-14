@@ -9,15 +9,13 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const yotpoConfig = require('./config.json');
 
-
 const cron = require("node-cron");
 
-cron.schedule("14 15 * * *", () => { 
-
-console.log("Executando a tarefa a cada 1 minuto");
+cron.schedule("* * * * *", () => { 
 
 var currentDateTime = new Date();    
 var currentDate = currentDateTime.toISOString().substring(0,10);
+
 try{
 
 let postData = []
