@@ -26,8 +26,8 @@ axios.post('https://api.yotpo.com/oauth/token', yotpoConfig)
     .then(({ data }) => {
       let productData = [];
       productData = data.products;
-      postData = productData.filter(rev => rev.updated_at.includes(currentDate));
-      insertObjects(postData);
+      //postData = productData.filter(rev => rev.updated_at.includes(currentDate));
+      insertObjects(productData);
     }).catch(e => res.status(200).send(e));
 
 })
