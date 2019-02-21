@@ -40,7 +40,8 @@ async function updateToAlgolia(objects, yotpoData){
 
   for (i = 0; i < objects.length; i++) { 
     var filterData = [];
-    filterData = yotpoData.filter(rev => rev.name.includes(objects[i].name.substr( objects[i].name.length - 10)) && rev.name.includes(objects[i].name.substring(0,3)) && rev.name.length == objects[i].name.length );
+  //  filterData = yotpoData.filter(rev => rev.name.includes(objects[i].name.substr( objects[i].name.length - 10)) && rev.name.includes(objects[i].name.substring(0,3)) && rev.name.length == objects[i].name.length && rev.name.includes(objects[i].name.substring(6,10)) && rev.name.includes(objects[i].name.substring(objects[i].name.length / 2 - 5 ,objects[i].name.length / 2 )));
+    filterData = yotpoData.filter(rev => rev.name.toString().match(objects[i].name.toString()));
     console.log('name',objects[i].name);
     console.log('rating',filterData[0].average_score);
 

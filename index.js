@@ -11,7 +11,7 @@ const yotpoConfig = require('./config.json');
 
 const cron = require("node-cron");
 
-cron.schedule("* * * * *", () => { 
+cron.schedule("50 23 * * *", () => { 
 
 var currentDateTime = new Date();    
 var currentDate = currentDateTime.toISOString().substring(0,10);
@@ -26,8 +26,8 @@ axios.post('https://api.yotpo.com/oauth/token', yotpoConfig)
     .then(({ data }) => {
       let productData = [];
       productData = data.products;
-      //postData = productData.filter(rev => rev.updated_at.includes(currentDate));
-      insertObjects(productData);
+      postData = productData.filter(rev => rev.updated_at.includes(currentDate));
+      insertObjects(postData);
     }).catch(e => res.status(200).send(e));
 
 })
